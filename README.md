@@ -16,5 +16,6 @@ This paper has been nominated for **the best student paper**. The final winner w
 
 ## Structure of the repository
 
-TBD - The source codes will be provided soon.
+TBD - Detailed information will be provided soon. 
 
+Local compilation is possible by running prepared install_local.sh script. It creates these directories: include, lib, bin, build.
