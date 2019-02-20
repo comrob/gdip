@@ -20,6 +20,12 @@ This paper has been nominated for **the best student paper**.
 
 ![GDIP example](https://raw.githubusercontent.com/petvana/images/master/gdip/basic-gdip-example-small.gif)
 
+## DTRP solution
+
+Feasible solution (blue) and the corresponding lower bound (red).
+
+![DTRP solution](https://raw.githubusercontent.com/petvana/images/master/gdip/rss-example-small.gif)
+
 ## Basic usage in C++
 
 Local compilation is possible by running prepared install_local.sh script. It creates these directories: include, lib, bin, build.
