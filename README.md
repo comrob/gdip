@@ -3,14 +3,15 @@
 This repository provides the optimal solution of the GDIP wchich enables to find a tight lower-bound for the Dubins Traveling Salesman Problem with Neighborhoods (DTSPN). The provided source codes are implemented in C++11 and support the following article published at RSS 2018 conference.
 
 ```
-@inproceedings{vana18rss,
-   author    = {Váňa, Petr and Faigl, Jan},
-   title     = {Optimal Solution of the Generalized Dubins Interval Problem},
-   booktitle = {Robotics: Science and Systems (RSS)},
-   year      = {2018},
-   sources   = {https://github.com/comrob/gdip},
-   doi       = {10.15607/RSS.2018.XIV.035},
-}
+@INPROCEEDINGS{VANA-RSS-18, 
+    AUTHOR    = {Váňa, Petr and Faigl, Jan}, 
+    TITLE     = {Optimal Solution of the Generalized Dubins Interval Problem}, 
+    BOOKTITLE = {Proceedings of Robotics: Science and Systems}, 
+    YEAR      = {2018}, 
+    ADDRESS   = {Pittsburgh, Pennsylvania}, 
+    MONTH     = {June}, 
+    DOI       = {10.15607/RSS.2018.XIV.035} 
+} 
 ```
 
 This paper has been nominated for **the best student paper**.
