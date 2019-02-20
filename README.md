@@ -3,20 +3,23 @@
 This repository provides the optimal solution of the GDIP wchich enables to find a tight lower-bound for the Dubins Traveling Salesman Problem with Neighborhoods (DTSPN). The provided source codes are implemented in C++11 and support the following article published at RSS 2018 conference.
 
 ```
-@inproceedings{vavna2018gdip,
-  title={{Optimal Solution of the Generalized Dubins Interval Problem}},
-  author={V{\'a}{\v{n}}a, Petr and Faigl, Jan},
-  booktitle={Robotics: Science and Systems (RSS)},
-  year={2018},
-  note={(Online first, URL: http://www.roboticsproceedings.org/rss14/p35.pdf)},
+@inproceedings{vana18rss,
+   author    = {Váňa, Petr and Faigl, Jan},
+   title     = {Optimal Solution of the Generalized Dubins Interval Problem},
+   booktitle = {Robotics: Science and Systems (RSS)},
+   year      = {2018},
+   sources   = {https://github.com/comrob/gdip},
+   doi       = {10.15607/RSS.2018.XIV.035},
 }
 ```
 
-This paper has been nominated for **the best student paper**. The final winner will be selected at the RSS converence in Pittsburgh soon.
+This paper has been nominated for **the best student paper**.
 
-## Structure of the repository
+## GDIP example
 
-TBD - Detailed information will be provided soon. 
+![GDIP example](https://raw.githubusercontent.com/petvana/images/master/gdip/basic-gdip-example-small.gif)
+
+## Basic usage in C++
 
 Local compilation is possible by running prepared install_local.sh script. It creates these directories: include, lib, bin, build.
 
