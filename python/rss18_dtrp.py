@@ -26,8 +26,8 @@ scenarios = [
 # Settings
 ################################################
 
-visualize = False
-show = False
+visualize = True
+show = True
 
 # Save figures into a directory "images"
 save_figures = False
