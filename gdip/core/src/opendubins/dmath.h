@@ -33,11 +33,11 @@ namespace opendubins {
     }
 
     inline void setSeed(double seed) {
-        if (seed == -1) {
+        /*if (seed == -1) {
             struct timespec ts; // C11 standard
             timespec_get(&ts, TIME_UTC);
             seed = (ts.tv_nsec);
-        }
+        }*/
         _dmath_current_seed = seed;
         opendubins_random_generator = std::default_random_engine(seed);
     }
