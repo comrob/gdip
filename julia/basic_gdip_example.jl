@@ -8,10 +8,21 @@
 
 using Printf
 
-using PyCall
-plt = pyimport("matplotlib.pyplot")
-Circle = pyimport("matplotlib.patches")["Circle"]
+# import PyPlot in version 2.8.0+
+import Pkg
+try
+    using PyPlot
+catch
+    Pkg.add("PyPlot")
+    using PyPlot
+end
+if Pkg.installed()["PyPlot"] < v"2.8.0"
+    error("Please upgrade PyPlot to version 2.8.0+")
+    exit(-1)
+end
+Circle = matplotlib.patches.Circle
 
+# import wrapper for the GDIP solution
 include("GDIP.jl")
 
 ##################################################
@@ -58,13 +69,13 @@ GDIP = true
 function plot_points(points; specs = "b", zorder = 1)
     x_val = [x[1] for x in points]
     y_val = [x[2] for x in points]
-    return plt[:plot](x_val, y_val, specs, zorder = zorder)
+    return plt.plot(x_val, y_val, specs, zorder = zorder)
 end
 
 function plot_interval(point, interval, sensing_radius)
-    ax = plt[:gca]()
+    ax = plt.gca()
     circle = Circle(point, sensing_radius, facecolor="yellow", edgecolor="orange", linewidth=1, alpha=0.2)
-    ax[:add_patch](circle)
+    ax.add_patch(circle)
 
     for angle in [interval[1], interval[1] + interval[2]]
         last = point + turning_radius * [cos(angle), sin(angle)]
@@ -77,20 +88,20 @@ function plot_arrow(px, py, angle; alpha = 1)
     rad = 0.7 * turning_radius
     dx = rad * cos(angle)
     dy = rad * sin(angle)
-    plt[:arrow](px, py, dx, dy, head_width=0.05, head_length=0.1, fc="k", ec="k", zorder=2, alpha=alpha)
-    plt[:plot]([px, px + dx], [py, py + dy], "k", visible=false)
+    plt.arrow(px, py, dx, dy, head_width=0.05, head_length=0.1, fc="k", ec="k", zorder=2, alpha=alpha)
+    plt.plot([px, px + dx], [py, py + dy], "k", visible=false)
 end
 
 function plot_figure(samples, point1, point2, title; sensing_radius = 0, interval1 = nothing, interval2 = nothing)
     # Clear and basic settings
-    plt[:clf]()
-    plt[:axis]("equal")
-    plt[:title](title)
-    plt[:xlabel]("x [-]")
-    plt[:ylabel]("y [-]")
-    plt[:ylim]([-3, 3])
-    plt[:xlim]([-1.5, 6.5])
-    plt[:grid](alpha=0.2)
+    plt.clf()
+    plt.axis("equal")
+    plt.title(title)
+    plt.xlabel("x [-]")
+    plt.ylabel("y [-]")
+    plt.ylim([-3, 3])
+    plt.xlim([-1.5, 6.5])
+    plt.grid(alpha=0.2)
 
     # Plot regions based on sensing radius
     if interval1 != nothing
@@ -102,7 +113,7 @@ function plot_figure(samples, point1, point2, title; sensing_radius = 0, interva
 
     # Plot samples of the Dubins maneuver
     ps = plot_points(samples)
-    plt[:legend]([ps[1]], ["Dubins maneuver"])
+    plt.legend([ps[1]], ["Dubins maneuver"])
 
     # First arrow
     p1 = samples[1]
@@ -110,7 +121,7 @@ function plot_figure(samples, point1, point2, title; sensing_radius = 0, interva
     angle = atan(p2[2]-p1[2], p2[1]-p1[1])
     plot_arrow(p1[1], p1[2], angle)
     plot_arrow(point1[1], point1[2], angle, alpha = 0.3)
-    plt[:plot](p1[1], p1[2], "k.")
+    plt.plot(p1[1], p1[2], "k.")
 
     # Second arrow
     p1 = samples[length(samples)]
@@ -118,10 +129,10 @@ function plot_figure(samples, point1, point2, title; sensing_radius = 0, interva
     angle = atan(p1[2]-p2[2], p1[1]-p2[1])
     plot_arrow(p1[1], p1[2], angle)
     plot_arrow(point2[1], point2[2], angle, alpha = 0.3)
-    plt[:plot](p1[1], p1[2], "k.")
+    plt.plot(p1[1], p1[2], "k.")
 
     if ! save_figures
-        plt[:pause](wait_time)
+        plt.pause(wait_time)
     end
 
     if save_figures
@@ -129,7 +140,7 @@ function plot_figure(samples, point1, point2, title; sensing_radius = 0, interva
         #filename = "images/{:05d}.png".format(image_idx)
         global image_idx = image_idx + 1
         print(filename * "\n")
-        plt[:savefig](filename)
+        plt.savefig(filename)
     end
 end
 

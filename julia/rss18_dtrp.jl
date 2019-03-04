@@ -6,15 +6,30 @@
 
 using Printf
 
-using PyCall
-plt = pyimport("matplotlib.pyplot")
-Circle = pyimport("matplotlib.patches")["Circle"]
+# import PyPlot in version 2.8.0+
+import Pkg
+try
+    using PyPlot
+catch
+    Pkg.add("PyPlot")
+    using PyPlot
+end
+if Pkg.installed()["PyPlot"] < v"2.8.0"
+    error("Please upgrade PyPlot to version 2.8.0+")
+    exit(-1)
+end
+Circle = matplotlib.patches.Circle
 
-include("GDIP.jl")
-
-using TimerOutputs
+try
+    using TimerOutputs
+catch
+    Pkg.add("TimerOutputs")
+end
 # Create the timer object
 to = TimerOutput()
+
+# import wrapper for the GDIP solution
+include("GDIP.jl")
 
 ################################################
 # Scenarios
@@ -67,13 +82,13 @@ end
 function plot_points(points; specs = "b")
     x_val = [x[1] for x in points]
     y_val = [x[2] for x in points]
-    plt[:plot](x_val, y_val, specs)	 
+    plt.plot(x_val, y_val, specs)	 
 end 
 
 function plot_circle(xy, radius)
-    ax = plt[:gca]()
+    ax = plt.gca()
     circle = Circle(xy, radius, facecolor="yellow",edgecolor="orange", linewidth=1, alpha=0.2)
-    ax[:add_patch](circle)
+    ax.add_patch(circle)
 end
 
 function dist_euclidean(coord1, coord2)
@@ -334,9 +349,9 @@ end
 # TODO missing functions
 
 function Sample_plot(sample)
-    ax = plt[:gca]()
+    ax = plt.gca()
     circle = Circle(sample.center, sample.radius, facecolor=nothing ,edgecolor="green", linewidth=1, alpha=0.2)
-    ax[:add_patch](circle)
+    ax.add_patch(circle)
 end
 
 function Sample_split(sample, resolution)
@@ -445,8 +460,8 @@ function GDIPSolver_init(turning_radius, goals, sensing_radius)
 end
 
 function GDIPSolver_plot_map(solver)
-    plt[:clf]()
-    plt[:axis]("equal")
+    plt.clf()
+    plt.axis("equal")
     plot_points(solver.goals, specs = "ro")
     if solver.sensing_radius != 0
         for goal in solver.goals
@@ -532,7 +547,7 @@ for scenario in scenarios
         filename, turning_radius, sensing_radius)
 
     if show
-        plt[:pause](0.1)
+        plt.pause(0.1)
     end
 
     max_resolution = 64
@@ -556,15 +571,15 @@ for scenario in scenarios
         
 
         if visualize
-            plt[:title](@sprintf("Maximum resolution: %4d", act_res))
+            plt.title(@sprintf("Maximum resolution: %4d", act_res))
         end
 
         if show
-            plt[:pause](0.1)
+            plt.pause(0.1)
         end
 
         if save_figures
-            plt[:savefig](@sprintf("images/dtrp-res-%04d.png", act_res))
+            plt.savefig(@sprintf("images/dtrp-res-%04d.png", act_res))
         end
         
         act_res *= 2
@@ -576,6 +591,6 @@ for scenario in scenarios
     print("\n")
 
     if show
-        plt[:pause](0.5)
+        plt.pause(0.5)
     end
 end
