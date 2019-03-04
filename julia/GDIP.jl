@@ -5,7 +5,7 @@
 using Libdl
 
 # Open the library explicitly.
-lib = Libdl.dlopen("../gdip/lib/libGDIP.so")
+lib = Libdl.dlopen("../gdip/lib/libGDIP")
 
 @inline function gdip_get_length()
     return ccall( (:julia_get_length, :libGDIP), Cdouble, () )
