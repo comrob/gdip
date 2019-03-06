@@ -24,6 +24,7 @@ try
     using TimerOutputs
 catch
     Pkg.add("TimerOutputs")
+    using TimerOutputs
 end
 # Create the timer object
 to = TimerOutput()
