@@ -14,9 +14,8 @@ catch
     Pkg.add("PyPlot")
     using PyPlot
 end
-if Pkg.installed()["PyPlot"] < v"2.8.0"
+if PyPlot.version < v"2.8.0"
     error("Please upgrade PyPlot to version 2.8.0+")
-    exit(-1)
 end
 Circle = matplotlib.patches.Circle
 
