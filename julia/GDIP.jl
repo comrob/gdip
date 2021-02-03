@@ -65,3 +65,15 @@ end
     )
     return length
 end
+
+@inline function gdip_dubins_circle_intersection(
+    circle_origin::Array{Float64,1}, circle_radius::Float64
+)
+    isintersecting = ccall(
+        (:julia_dubins_circle_intersection, :libGDIP),                                                                          # name of C function and library
+        Cuchar,                                                                                                             # output type
+        (Cdouble, Cdouble, Cdouble),                        # circle_origin_x, circle_origin_y, circle_radius
+        circle_origin[1], circle_origin[2], circle_radius   # names of Julia variables to pass in
+    )
+    return isintersecting > 0
+end

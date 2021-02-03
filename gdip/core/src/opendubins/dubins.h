@@ -75,6 +75,8 @@ namespace opendubins {
 
         StateAtDistance intersectLine(const Line &line) const;
 
+        StateAtDistance intersectCircle(const Circle &circle) const;
+
         bool intersectLineBool(const Line &line) const;
 
         inline double getLength() const {
