@@ -13,7 +13,7 @@ end
 
 @inline function gdip_sample_many(step::Float64)
     length = gdip_get_length()
-    samples = []
+    samples = Vector{Vector{Float64}}()
     sample_l = collect(0:step:length)
     push!(sample_l, length)
     for l in sample_l
