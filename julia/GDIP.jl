@@ -77,3 +77,16 @@ end
     )
     return isintersecting > 0
 end
+
+@inline function gdip_dubins_closest(point::Array{Float64,1})
+    ccall(
+        (:julia_dubins_closest, :libGDIP),                                                                          # name of C function and library
+        Cvoid,                                                                                                             # output type
+        (Cdouble, Cdouble),  # point_x, point_y
+        point[1], point[2]   # names of Julia variables to pass in
+    )
+    x = ccall( (:julia_get_tmp_x, :libGDIP), Cdouble, (), )
+    y = ccall( (:julia_get_tmp_y, :libGDIP), Cdouble, (), )
+    theta = ccall( (:julia_get_tmp_theta, :libGDIP), Cdouble, (), )
+    return [x,y,theta]
+end

@@ -43,6 +43,10 @@ extern "C" {
         double circle_origin_x, double circle_origin_y, double circle_radius
     );
 
+    void julia_dubins_closest(
+        double point_x, double point_y
+    );
+
 #ifdef __cplusplus
 }
 #endif
