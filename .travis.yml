@@ -13,6 +13,7 @@ matrix:
       compiler: gcc
     - os: osx
       compiler: gcc
+  allow_failures:
     - os: windows   
       compiler: gcc
       
