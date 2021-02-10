@@ -33,7 +33,7 @@ namespace opendubins {
             // last interval can end behind 4PI (but no problem here)
             double from = twice[0].rightDir;
             double to = from + twice[0].diff;
-            for (uint i = 1; i < twice.size(); ++i) {
+            for (unsigned int i = 1; i < twice.size(); ++i) {
                 const auto &it = twice[i];
                 if (it.rightDir <= to) {
                     to = max(to, (it.rightDir + it.diff));
