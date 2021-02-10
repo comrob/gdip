@@ -1,0 +1,22 @@
+language: cpp
+
+install: make get-deps
+
+matrix:
+  include:
+    - os: linux
+      compiler: gcc
+    - os: linux
+      compiler: clang
+    - os: osx
+    - os: windows
+
+install:
+    - cd gdip
+    - ./install.sh
+    - cd -
+
+script:
+    - if [ "$TRAVIS_OS_NAME" = "linux" ];   then gdip/build/examples/hellodubins        ; fi
+    - if [ "$TRAVIS_OS_NAME" = "osx" ];     then gdip/build/examples/hellodubins        ; fi
+    - if [ "$TRAVIS_OS_NAME" = "windows" ]; then gdip/build/examples/Debug/hellodubins  ; fi

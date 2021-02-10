@@ -20,6 +20,10 @@ namespace opendubins {
 #define M_PI 3.141592653589793238462643383279502884 /* pi use l for long double */
 #endif
 
+#ifndef M_PI_2
+#define M_PI_2 (M_PI/2)
+#endif
+
     const double TOLERANCE = 1e-5;
 
     static unsigned _dmath_current_seed = -1;
