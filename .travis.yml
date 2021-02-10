@@ -5,48 +5,10 @@ install: make get-deps
 matrix:
   include:
     - os: linux
+    - os: linux
+      compiler: clang
     - os: osx
-    - os: windows 
-    
-    
-#      dist: trusty      
-#      compiler: gcc
-#    - os: linux
-#      dist: trusty      
-#      compiler: clang
-#    - os: linux
-#      dist: xenial      
-#      compiler: gcc
-#    - os: linux
-#      dist: bionic      
-#      compiler: gcc
-#    - os: osx
-#      compiler: gcc
-#    - os: osx
-#      compiler: clang
-#    - os: osx
-#    - os: windows   
-#      compiler: gcc
-#    - os: windows   
-#      compiler: clang
-#    - os: windows   
-      
-      # sudo: true
-      #addons:
-      # apt:
-       #  packages: &precise_latest_boost_packages
-        #   - gcc-4.8
-         #  - g++-4.8
-           #- gcov-4.9
-          # - clang-3.7
-           #- valgrind
-           # Misc
-           #- python-yaml
-           #- lcov
-           #- libopencv-dev
-         #sources: &precise_latest_boost_sources
-         #  - ubuntu-toolchain-r-test
-         #  - llvm-toolchain-precise-3.7
+    - os: windows
 
 install:
     - cd gdip
@@ -54,6 +16,6 @@ install:
     - cd -
 
 script:
-    - if [ "$TRAVIS_OS_NAME" = "linux" ];   then gdip/build/examples/hellodubins     ; fi
-    - if [ "$TRAVIS_OS_NAME" = "osx" ];     then gdip/build/examples/hellodubins     ; fi
-    - if [ "$TRAVIS_OS_NAME" = "windows" ]; then gdip/build/examples/Debug/hellodubins     ; fi
+    - if [ "$TRAVIS_OS_NAME" = "linux" ];   then gdip/build/examples/hellodubins        ; fi
+    - if [ "$TRAVIS_OS_NAME" = "osx" ];     then gdip/build/examples/hellodubins        ; fi
+    - if [ "$TRAVIS_OS_NAME" = "windows" ]; then gdip/build/examples/Debug/hellodubins  ; fi
