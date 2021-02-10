@@ -2,5 +2,5 @@
 
 mkdir -p build
 cd build && cmake -D CMAKE_INSTALL_PREFIX=.. ../src ..
-cmake --build .
 cd -
+cmake --build build
