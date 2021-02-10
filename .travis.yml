@@ -54,7 +54,6 @@ install:
     - cd -
 
 script:
-    ############################################################################
-    # Build main and tests
-    ############################################################################
-     - gdip/build/examples/hellodubins
+    - if [ "$TRAVIS_OS_NAME" = "linux" ]; then gdip/build/examples/hellodubins       ; fi
+    - if [ "$TRAVIS_OS_NAME" = "osx" ]; then gdip/build/examples/hellodubins         ; fi
+    - if [ "$TRAVIS_OS_NAME" = "windows" ]; then gdip/build/examples/hellodubins.exe ; fi
