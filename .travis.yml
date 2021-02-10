@@ -1,5 +1,7 @@
 language: cpp
 
+install: make get-deps
+
 matrix:
   include:
     - os: linux
@@ -19,8 +21,6 @@ matrix:
     - os: osx
       compiler: clang
     - os: osx
-      
-  allow_failures:
     - os: windows   
       compiler: gcc
     - os: windows   
