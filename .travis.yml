@@ -3,9 +3,20 @@ language: cpp
 matrix:
   include:
     - os: linux
-      dist: trusty
-      sudo: true
+      dist: trusty      
       compiler: gcc
+    - os: linux
+      dist: xenial      
+      compiler: gcc
+    - os: linux
+      dist: bionic      
+      compiler: gcc
+    - os: osx
+      compiler: gcc
+    - os: windows   
+      compiler: gcc
+      
+      # sudo: true
       #addons:
       # apt:
        #  packages: &precise_latest_boost_packages
