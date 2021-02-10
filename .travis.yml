@@ -34,7 +34,7 @@ matrix:
          #  - llvm-toolchain-precise-3.7
 
 install:
-    - cd gdip; ./install.sh
+    - cd gdip; ./install.sh; cd -
 
 script:
     ############################################################################
