@@ -56,4 +56,4 @@ install:
 script:
     - if [ "$TRAVIS_OS_NAME" = "linux" ];   then gdip/build/examples/hellodubins     ; fi
     - if [ "$TRAVIS_OS_NAME" = "osx" ];     then gdip/build/examples/hellodubins     ; fi
-    - if [ "$TRAVIS_OS_NAME" = "windows" ]; then gdip/build/examples/hellodubins.exe ; fi
+    - if [ "$TRAVIS_OS_NAME" = "windows" ]; then gdip/build/examples/hellodubins     ; fi
