@@ -5,27 +5,31 @@ install: make get-deps
 matrix:
   include:
     - os: linux
-      dist: trusty      
-      compiler: gcc
-    - os: linux
-      dist: trusty      
-      compiler: clang
-    - os: linux
-      dist: xenial      
-      compiler: gcc
-    - os: linux
-      dist: bionic      
-      compiler: gcc
     - os: osx
-      compiler: gcc
-    - os: osx
-      compiler: clang
-    - os: osx
-    - os: windows   
-      compiler: gcc
-    - os: windows   
-      compiler: clang
-    - os: windows   
+    - os: windows 
+    
+    
+#      dist: trusty      
+#      compiler: gcc
+#    - os: linux
+#      dist: trusty      
+#      compiler: clang
+#    - os: linux
+#      dist: xenial      
+#      compiler: gcc
+#    - os: linux
+#      dist: bionic      
+#      compiler: gcc
+#    - os: osx
+#      compiler: gcc
+#    - os: osx
+#      compiler: clang
+#    - os: osx
+#    - os: windows   
+#      compiler: gcc
+#    - os: windows   
+#      compiler: clang
+#    - os: windows   
       
       # sudo: true
       #addons:
@@ -45,10 +49,12 @@ matrix:
          #  - llvm-toolchain-precise-3.7
 
 install:
-    - cd gdip; ./install.sh; cd -
+    - cd gdip
+    - ./install.sh
+    - cd -
 
 script:
     ############################################################################
     # Build main and tests
     ############################################################################
-     - ./gdip/build/examples/hellodubins
+     - gdip/build/examples/hellodubins
