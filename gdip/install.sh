@@ -2,5 +2,5 @@
 
 mkdir -p build
 cd build && cmake -D CMAKE_INSTALL_PREFIX=.. ../src ..
-make install -j4
 cd -
+cmake --build build

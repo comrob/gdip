@@ -12,9 +12,8 @@ using namespace std;
 
 namespace opendubins {
 
-    Dubins::Dubins() :
-            len1(NAN), len2(NAN), len3(NAN), radius(NAN), isCCC(false), length(numeric_limits<double>::max()), type(
-            DType::Unknown) {
+    Dubins::Dubins() : len1(NAN), len2(NAN), len3(NAN), type(DType::Unknown), radius(NAN), 
+                        isCCC(false), length(numeric_limits<double>::max()) {
     }
 
     Dubins::Dubins(const Line &line) : Dubins(line.getStart(), false, 0, line.getLength(), 0, 1) {
