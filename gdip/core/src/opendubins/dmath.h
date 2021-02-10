@@ -22,7 +22,7 @@ namespace opendubins {
 
     const double TOLERANCE = 1e-5;
 
-    static double _dmath_current_seed = -1;
+    static unsigned _dmath_current_seed = -1;
 
     static std::default_random_engine opendubins_random_generator;
 
@@ -32,7 +32,7 @@ namespace opendubins {
         return std::uniform_real_distribution<double>(0,1)(opendubins_random_generator);
     }
 
-    inline void setSeed(double seed) {
+    inline void setSeed(unsigned seed) {
         /*if (seed == -1) {
             struct timespec ts; // C11 standard
             timespec_get(&ts, TIME_UTC);
