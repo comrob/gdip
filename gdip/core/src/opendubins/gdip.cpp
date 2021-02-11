@@ -382,8 +382,8 @@ namespace opendubins {
             double nTurn = angleToSide(from.ang, directionS, isLeft);
 
             State st = from;
-            Arc arc(st, nTurn, radius);
-            double lenS = arc.getEnd().point.distance(goal.center);
+            Arc arc2(st, nTurn, radius);
+            double lenS = arc2.getEnd().point.distance(goal.center);
 
             // end of R segments leads directly to center of the goal area (to.point)
             auto lenS2 = max(0.0, lenS - goal.radius);

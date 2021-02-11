@@ -227,11 +227,11 @@ namespace opendubins {
                         double alpha2 = std::asin(dir2 / 2 / radius);
 
                         double turn2 = -2 * M_PI + 2 * alpha2;
-                        double dir2 = from.getLeft() + turn1 + turn2;
+                        double dir22 = from.getLeft() + turn1 + turn2;
 
                         double nLen = radius * (turn1 - turn2);
                         if (nLen < length) {
-                            if (to.inInterval(dir2)) {
+                            if (to.inInterval(dir22)) {
                                 length = nLen;
                                 isCCC = false;
                                 len1 = turn1;
@@ -239,7 +239,7 @@ namespace opendubins {
                                 len3 = turn2;
 
                                 start = from.getLeftState();
-                                end = State(to.point, dir2);
+                                end = State(to.point, dir22);
 
                                 type = DType::DIP_LRp;
                             }
@@ -302,11 +302,11 @@ namespace opendubins {
                         double alpha2 = std::asin(dir2 / 2 / radius);
 
                         double turn2 = 2 * M_PI - 2 * alpha2;
-                        double dir2 = from.getRight() + turn1 + turn2;
+                        double dir22 = from.getRight() + turn1 + turn2;
 
                         double nLen = radius * (-turn1 + turn2);
                         if (nLen < length) {
-                            if (to.inInterval(dir2)) {
+                            if (to.inInterval(dir22)) {
                                 length = nLen;
                                 isCCC = false;
                                 len1 = turn1;
@@ -314,7 +314,7 @@ namespace opendubins {
                                 len3 = turn2;
 
                                 start = from.getRightState();
-                                end = State(to.point, dir2);
+                                end = State(to.point, dir22);
 
                                 type = DType::DIP_RLp;
                             }
