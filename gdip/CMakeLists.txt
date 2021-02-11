@@ -7,11 +7,20 @@ if(CMAKE_BUILD_TYPE MATCHES Debug)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
 else()
     MESSAGE("Compiling in the Release mode")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native")
+    if (WIN32)
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
+    else()
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native")
+    endif()
     set(CMAKE_BUILD_TYPE Release)
 endif()
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+if (WIN32)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -W4")
+else()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall")
+endif()
+
 # For debug and profilling:
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
 

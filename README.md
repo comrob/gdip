@@ -1,5 +1,7 @@
 # Generalized Dubins Interval Problem (GDIP)
 
+[![Build Status](https://travis-ci.com/comrob/gdip.svg?branch=master)](https://travis-ci.com/comrob/gdip)
+
 This repository provides the optimal solution of the GDIP wchich enables to find a tight lower-bound for the Dubins Traveling Salesman Problem with Neighborhoods (DTSPN). The provided source codes are implemented in C++11 and support the following article published at RSS 2018 conference.
 
 ```
