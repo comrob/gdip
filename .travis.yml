@@ -18,3 +18,4 @@ install:
 
 script:
     - gdip/bin/hellodubins
+    - gdip/bin/dubinstest
