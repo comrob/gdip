@@ -6,9 +6,7 @@ cd -
 
 env
 
-UNAME=$(uname)
-
-if [[ "$UNAME" == CYGWIN* || "$UNAME" == MINGW* ]] ; then
+if [[ "$OS" == "Windows_NT" ]] ; then
 	echo "Compiling on Windows"
     echo "cmake --build build --config Release"
     cmake --build build --config Release
