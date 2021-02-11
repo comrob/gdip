@@ -4,7 +4,8 @@ mkdir -p build
 cd build && cmake -D CMAKE_INSTALL_PREFIX=.. ../src ..
 cd -
 
-env
+#env
+uname
 
 if [[ "$OS" == "Windows_NT" ]] ; then
 	echo "Compiling on Windows"
