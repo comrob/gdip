@@ -248,7 +248,7 @@ namespace maxdiptest {
 
     TEST (DIP, RpLp) {
 
-        int localType[200] = {};
+        // int localType[200] = {};
 
         State p1 = State(Point(0, 0), 0);
         for (int i = 0; i < COUNT; ++i) {
@@ -266,7 +266,7 @@ namespace maxdiptest {
             p1.random(100);
             double turn = M_PI + myRandom() * M_PI;
             Dubins d1(p1, false, turn, 0, -turn, getRadius());
-            double intervalSize = 3;
+            // double intervalSize = 3;
             checkUsingIntervals(d1, 0.1, 0.1, 0.1, 0.1);
         }
     }
