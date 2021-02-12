@@ -12,7 +12,7 @@ using namespace std;
 
 namespace opendubins {
 
-    Dubins::Dubins() : len1(NAN), len2(NAN), len3(NAN), type(DType::Unknown), radius(NAN), 
+    Dubins::Dubins() : len1(GDIP_NAN), len2(GDIP_NAN), len3(GDIP_NAN), type(DType::Unknown), radius(GDIP_NAN), 
                         isCCC(false), length(numeric_limits<double>::max()) {
     }
 

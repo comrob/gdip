@@ -24,6 +24,8 @@ namespace opendubins {
 #define M_PI_2 (M_PI/2)
 #endif
 
+#define GDIP_NAN std::numeric_limits<double>::quiet_NaN()
+
     const double TOLERANCE = 1e-5;
 
     static unsigned _dmath_current_seed = 42;

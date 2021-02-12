@@ -36,7 +36,7 @@ namespace opendubins {
         }
 
         static State getInvalid() {
-            return State(Point::getInvalid(), NAN);
+            return State(Point::getInvalid(), GDIP_NAN);
         }
 
         inline bool isValid() const {

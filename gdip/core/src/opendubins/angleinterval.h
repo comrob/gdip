@@ -29,7 +29,7 @@ namespace opendubins {
 
         int resolution;
 
-        AngleInterval() : point(Point(NAN, NAN)), rightDir(NAN), diff(NAN) {
+        AngleInterval() : point(Point(GDIP_NAN, GDIP_NAN)), rightDir(GDIP_NAN), diff(GDIP_NAN) {
             resolution = -1;
         };
 

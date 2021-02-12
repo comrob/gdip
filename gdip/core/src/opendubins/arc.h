@@ -20,7 +20,7 @@ namespace opendubins {
         double radius;
 
         Arc() :
-                angle(NAN), radius(NAN) {
+                angle(GDIP_NAN), radius(GDIP_NAN) {
         }
 
         Arc(const State &state, double angle, double radius) :
