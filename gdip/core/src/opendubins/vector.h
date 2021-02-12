@@ -28,7 +28,7 @@ namespace opendubins {
         }
 
         static Vector getInvalid(){
-            return Vector(NAN, NAN);
+            return Vector(GDIP_NAN, GDIP_NAN);
         }
 
         inline bool isValid() const{

@@ -16,8 +16,8 @@ namespace opendubins {
         double distance;
 
         StateAtDistance() {
-            state = State(Point(NAN, NAN), NAN);
-            distance = NAN;
+            state = State(Point(GDIP_NAN, GDIP_NAN), GDIP_NAN);
+            distance = GDIP_NAN;
         }
 
         StateAtDistance(State state, double distance) {
