@@ -39,6 +39,14 @@ extern "C" {
     double julia_get_tmp_y();
     double julia_get_tmp_theta();
 
+    bool julia_dubins_circle_intersection(
+        double circle_origin_x, double circle_origin_y, double circle_radius
+    );
+
+    void julia_dubins_closest(
+        double point_x, double point_y
+    );
+
 #ifdef __cplusplus
 }
 #endif

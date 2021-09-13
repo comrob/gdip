@@ -13,7 +13,7 @@ end
 
 @inline function gdip_sample_many(step::Float64)
     length = gdip_get_length()
-    samples = []
+    samples = Vector{Vector{Float64}}()
     sample_l = collect(0:step:length)
     push!(sample_l, length)
     for l in sample_l
@@ -64,4 +64,29 @@ end
         p1[1], p1[2], interval1[1], interval1[2], radius1, p2[1], p2[2], interval2[1], interval2[2], radius2,  turningRadius # names of Julia variables to pass in
     )
     return length
+end
+
+@inline function gdip_dubins_circle_intersection(
+    circle_origin::Array{Float64,1}, circle_radius::Float64
+)
+    isintersecting = ccall(
+        (:julia_dubins_circle_intersection, :libGDIP),                                                                          # name of C function and library
+        Cuchar,                                                                                                             # output type
+        (Cdouble, Cdouble, Cdouble),                        # circle_origin_x, circle_origin_y, circle_radius
+        circle_origin[1], circle_origin[2], circle_radius   # names of Julia variables to pass in
+    )
+    return isintersecting > 0
+end
+
+@inline function gdip_dubins_closest(point::Array{Float64,1})
+    ccall(
+        (:julia_dubins_closest, :libGDIP),                                                                          # name of C function and library
+        Cvoid,                                                                                                             # output type
+        (Cdouble, Cdouble),  # point_x, point_y
+        point[1], point[2]   # names of Julia variables to pass in
+    )
+    x = ccall( (:julia_get_tmp_x, :libGDIP), Cdouble, (), )
+    y = ccall( (:julia_get_tmp_y, :libGDIP), Cdouble, (), )
+    theta = ccall( (:julia_get_tmp_theta, :libGDIP), Cdouble, (), )
+    return [x,y,theta]
 end

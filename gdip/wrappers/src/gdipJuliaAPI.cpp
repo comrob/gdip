@@ -61,3 +61,15 @@ double julia_get_tmp_y(){
 double julia_get_tmp_theta(){
     return juliaAPI.tmp_state.ang;
 }
+
+bool julia_dubins_circle_intersection(
+    double circle_origin_x, double circle_origin_y, double circle_radius
+){
+    Circle c(Point(circle_origin_x, circle_origin_y), circle_radius);
+    return juliaAPI.maneuver.intersectCircle(c).isValid();
+}
+
+void julia_dubins_closest(double point_x, double point_y){
+    auto state_at_distance = juliaAPI.maneuver.getClosestStateAndDistance(Point(point_x, point_y));
+    juliaAPI.tmp_state = state_at_distance.state;
+}

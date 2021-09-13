@@ -157,6 +157,51 @@ namespace opendubins {
         return StateAtDistance(State(), 0);
     }
 
+    // Find the first intrsection between Dubins and Circle
+    // If no intersection is detected non-valid State is returned
+    // Validity of state can be tested by Dubins::isValid() function
+    // Returned StateAtDistance type also contains information about distance
+    // in which intersection occurs.
+    StateAtDistance Dubins::intersectCircle(const Circle &circle) const {
+        State state;
+        double len;
+        tie(state, len) = circle.firstIntersection(getFirstArc());
+        if (state.isValid() && len < getFirstArc().getLength()) {
+            return StateAtDistance(state, len);
+        }
+
+        if (isCCC) {
+            tie(state, len) = circle.firstIntersection(getCenterArc());
+            if (!state.invalid() && len < getCenterArc().getLength()) {
+                return StateAtDistance(state, len + getFirstArc().getLength());
+            }
+        } else {
+            Line center_segment = getCenter();
+            Point candidate = circle.halfLineIntersection(getFirstArc().getEnd());
+            if (candidate.isValid()){
+                double dist = candidate.distance(center_segment.getStart().point);
+                if(dist <= center_segment.getLength()){
+                    dist += getFirstArc().getLength();
+                    return StateAtDistance(getState(dist), dist);
+                }
+            }
+        }
+
+        tie(state, len) = circle.firstIntersection(getSecondArc());
+        if (state.isValid() && len < getSecondArc().getLength()) {
+            double totalLength = getFirstArc().getLength();
+            if (isCCC) {
+                totalLength += getCenterArc().getLength();
+            } else {
+                totalLength += getCenter().getLength();
+            }
+            totalLength += len;
+            return StateAtDistance(state, totalLength);
+        }
+
+        return StateAtDistance(State::getInvalid(), NAN);
+    }
+
     bool Dubins::intersectLineBool(const Line &line) const {
         if (!getFirstArc().intersectionPoint(line).state.invalid()) {
             return true;
