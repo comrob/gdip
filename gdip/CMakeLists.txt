@@ -10,7 +10,7 @@ else()
     if (WIN32)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
     else()
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3") # -march=native
     endif()
     set(CMAKE_BUILD_TYPE Release)
 endif()
