@@ -21,10 +21,10 @@ namespace opendubins {
 
         State(double, double, double);
 
-        inline void set(double x, double y, double ang) {
+        inline void set(double x, double y, double angle) {
             point.x = x;
             point.y = y;
-            this->ang = ang;
+            ang = angle;
         }
 
         void random(double);
@@ -36,7 +36,7 @@ namespace opendubins {
         }
 
         static State getInvalid() {
-            return State(Point::getInvalid(), NAN);
+            return State(Point::getInvalid(), GDIP_NAN);
         }
 
         inline bool isValid() const {

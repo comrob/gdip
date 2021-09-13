@@ -12,7 +12,7 @@ namespace opendubins {
 
     State::State() {
         this->point = Point(0, 0);
-        this->ang = NAN;
+        this->ang = GDIP_NAN;
     }
 
     State::State(Point point, double angle) {

@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-rm -r include bin lib build
+rm -rf include bin lib build

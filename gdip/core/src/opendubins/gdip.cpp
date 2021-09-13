@@ -340,8 +340,8 @@ namespace opendubins {
 
         double sgn = isLeft ? 1 : -1;
 
-        turn = NAN;
-        straight = NAN;
+        turn = GDIP_NAN;
+        straight = GDIP_NAN;
         length = numeric_limits<double>::max();
 
         // no maneuver
@@ -382,8 +382,8 @@ namespace opendubins {
             double nTurn = angleToSide(from.ang, directionS, isLeft);
 
             State st = from;
-            Arc arc(st, nTurn, radius);
-            double lenS = arc.getEnd().point.distance(goal.center);
+            Arc arc2(st, nTurn, radius);
+            double lenS = arc2.getEnd().point.distance(goal.center);
 
             // end of R segments leads directly to center of the goal area (to.point)
             auto lenS2 = max(0.0, lenS - goal.radius);
@@ -547,7 +547,7 @@ namespace opendubins {
             }
 
         }
-        return NAN;
+        return GDIP_NAN;
     }
 
 #define GDIP_CCp_MACRO(x) GDIP_CCp_fce(from, to, diff2, isLeft, x, S1, radius);
@@ -558,8 +558,8 @@ namespace opendubins {
 
         auto dir = to.point - S1;
 
-        double vbest = NAN;
-        double best = NAN;
+        double vbest = GDIP_NAN;
+        double best = GDIP_NAN;
 
         double a = dir.getAngle();
         double b = a + M_PI / 2 * (isLeft ? -1: 1);
@@ -680,7 +680,7 @@ namespace opendubins {
             }
 
         }
-        return NAN;
+        return GDIP_NAN;
     }
 
 #define GDIP_CpC_MACRO(x) GDIP_CpC_fce(from, to, diff2, isLeft, x, S2, radius);
@@ -691,8 +691,8 @@ namespace opendubins {
 
         auto dir = from.point - S2;
 
-        double vbest = NAN;
-        double best = NAN;
+        double vbest = GDIP_NAN;
+        double best = GDIP_NAN;
 
         double a = dir.getAngle();
         double b = a + M_PI / 2 * (isLeft ? 1: -1);

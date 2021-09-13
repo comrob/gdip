@@ -19,7 +19,7 @@ namespace opendubins {
         Point center;
         double radius;
 
-        inline Circle() : center(Point(NAN, NAN)), radius(NAN) { };
+        inline Circle() : center(Point(GDIP_NAN, GDIP_NAN)), radius(GDIP_NAN) { };
 
         Circle(const Point &center, const double &radius);
 

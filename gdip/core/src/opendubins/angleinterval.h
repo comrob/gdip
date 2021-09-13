@@ -15,6 +15,9 @@ namespace opendubins {
 
     struct AngleInterval {
 
+        // point to which the angle interval belongs
+        Point point;
+
         // right angle from the interval
         // startAngle \in <0,2*PI)
         double rightDir;
@@ -24,12 +27,9 @@ namespace opendubins {
         // diff = 2*PI >> every possible dirrection
         double diff;
 
-        // point to which the angle interval belongs
-        Point point;
-
         int resolution;
 
-        AngleInterval() : point(Point(NAN, NAN)), rightDir(NAN), diff(NAN) {
+        AngleInterval() : point(Point(GDIP_NAN, GDIP_NAN)), rightDir(GDIP_NAN), diff(GDIP_NAN) {
             resolution = -1;
         };
 
@@ -143,7 +143,7 @@ namespace opendubins {
         }
 
         inline void normalize() {
-            double newRight = angleToLeft(0, rightDir);
+            rightDir = angleToLeft(0, rightDir);
         }
 
         static std::vector<AngleInterval> mergeIntervals(std::vector<AngleInterval> input);

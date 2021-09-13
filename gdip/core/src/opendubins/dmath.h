@@ -20,9 +20,15 @@ namespace opendubins {
 #define M_PI 3.141592653589793238462643383279502884 /* pi use l for long double */
 #endif
 
+#ifndef M_PI_2
+#define M_PI_2 (M_PI/2)
+#endif
+
+#define GDIP_NAN std::numeric_limits<double>::quiet_NaN()
+
     const double TOLERANCE = 1e-5;
 
-    static double _dmath_current_seed = -1;
+    static unsigned _dmath_current_seed = 42;
 
     static std::default_random_engine opendubins_random_generator;
 
@@ -32,8 +38,8 @@ namespace opendubins {
         return std::uniform_real_distribution<double>(0,1)(opendubins_random_generator);
     }
 
-    inline void setSeed(double seed) {
-        /*if (seed == -1) {
+    inline void setSeed(unsigned seed) {
+        /*if (seed == 42) {
             struct timespec ts; // C11 standard
             timespec_get(&ts, TIME_UTC);
             seed = (ts.tv_nsec);

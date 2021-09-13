@@ -40,7 +40,7 @@ if (GTEST_FOUND)
             )
 
     target_link_libraries(dubinstest opendubins_core)
-    target_link_libraries(dubinstest ${GTEST_BOTH_LIBRARIES} pthread )
+    target_link_libraries(dubinstest ${GTEST_BOTH_LIBRARIES} )
 
     add_test(core_tests dubinstest)
 

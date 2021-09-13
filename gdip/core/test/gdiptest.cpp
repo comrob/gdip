@@ -538,7 +538,7 @@ namespace gdiptest {
 
             if(type == 1){
                 r1 = sgn1 * myRandom() * 1;
-                r2 = fabs(myRandom() * r2) * sgn2;
+                r2 = fabs(myRandom() * r1) * sgn2;
             }else if (type == 2){
                 r2 = sgn2 * myRandom() * 1;
                 r1 = fabs(myRandom() * r2) * sgn1;

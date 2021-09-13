@@ -36,7 +36,7 @@ namespace opendubins {
         }
 
         static Point getInvalid(){
-            return Point(NAN, NAN);
+            return Point(GDIP_NAN, GDIP_NAN);
         }
 
         inline bool isValid() const{
