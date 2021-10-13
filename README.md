@@ -17,7 +17,7 @@ This repository provides the optimal solution of the GDIP wchich enables to find
 }
 ```
 
-This paper has been nominated for **the best student paper**.
+This paper has been nominated for **the best student paper** at RSS 2018 conference.
 
 ## GDIP example
 
